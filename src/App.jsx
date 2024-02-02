@@ -33,8 +33,7 @@ const useResource = (baseUrl) => {
   const create = newObject => {
     async function fetch() {
       const response = await axios.post(baseUrl, newObject)
-      setResources([...resources, response])
-      getAll()
+      setResources(prevResources => [...prevResources, response.data]);
     }
     fetch()
   }
